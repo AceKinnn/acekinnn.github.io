@@ -7,7 +7,10 @@
   </head>
   <body>
     <script>
-      window.location.replace(window.location.pathname);
+      // Check if the page is already the index.html, which is used by React.
+      if (window.location.pathname !== '/') {
+        window.location.replace(window.location.pathname);
+      }
     </script>
   </body>
 </html>
