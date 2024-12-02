@@ -1,11 +1,12 @@
 import React from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 const navigation = [
-  { name: 'Portfolio', href: '#', current: true },
-  { name: 'About', href: '#', current: false },
-  { name: 'Blog', href: '#', current: false },
+  { name: 'Portfolio', href: '/portfolio', current: true },
+  { name: 'About', href: '/about', current: false },
+  { name: 'Blog', href: '/blog', current: false },
 ];
 
 function classNames(...classes) {
@@ -35,11 +36,12 @@ function Navbar() {
                   className="h-8 w-auto"
                 />
               </div>
-              <div className="hidden sm:inline flex-grow m-auto space-x-4">
+              {/* flex-grow */}
+              <div className="hidden sm:inline m-auto space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.href} // Use to instead of href for react-router-dom
                     aria-current={item.current ? 'page' : undefined}
                     className={classNames(
                       item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -47,7 +49,7 @@ function Navbar() {
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

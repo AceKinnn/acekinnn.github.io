@@ -1,30 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react';
-import Navbar from './components/Navbar';
-import Card from './components/Card';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar'; // Adjust path as necessary
+import Portfolio from './pages/Portfolio'; // Make sure to create this page component
+import About from './pages/About'; // Create About page
+import Blog from './pages/Blog'; // Create Blog page
 
 function App() {
   return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+    <Router>
       <Navbar />
-      <Card />
-      {/* <Test /> */}
-    </div>
+      <main>
+        <Routes>
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
